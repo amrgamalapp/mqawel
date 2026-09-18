@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "478034761629",
+    "firebase_url": "https://el-iraqia-services-default-rtdb.firebaseio.com",
+    "project_id": "el-iraqia-services",
+    "storage_bucket": "el-iraqia-services.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478034761629:android:f029998aa2731e0673c174",
+        "android_client_info": {
+          "package_name": "com.iraqia.amr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnb8YWP3tenO5embEtQZwVq_PQcRhAGAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

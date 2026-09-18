@@ -1,0 +1,124 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid == $uid || auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1')",
+        ".write": "auth != null && auth.uid == $uid"
+      },
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "news": {
+      ".read": true,
+      "$id": {
+        ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+        ".validate": "newData.hasChildren(['title', 'body'])"
+      }
+    },
+    "tanseek_requests": {
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+      "$id": {
+        ".write": "auth != null && !data.exists() && newData.child('userId').val() == auth.uid",
+        ".validate": "newData.hasChildren(['name', 'phone', 'score', 'userId'])"
+      }
+    },
+    "pendingProviders": {
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+      "$id": {
+        ".write": "auth != null && !data.exists() && newData.child('userId').val() == auth.uid",
+        ".validate": "newData.hasChildren(['name', 'phone', 'category', 'userId'])"
+      }
+    },
+    "high_school_bookings": {
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+      "$id": {
+        ".write": "!data.exists()"
+      }
+    },
+    "contest_submissions": {
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+      "$id": {
+        ".write": "!data.exists()"
+      }
+    },
+    "providers": {
+      ".read": true,
+      "$provider_id": {
+        ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+        ".validate": "newData.hasChildren(['name', 'phone', 'category'])"
+      }
+    },
+    "urgent_requests": {
+      ".read": true,
+      "$id": {
+        ".write": "!data.exists() && (auth == null || newData.child('userId').val() == auth.uid)",
+        ".validate": "auth == null || newData.child('userId').val() == auth.uid"
+      }
+    },
+    "market_products": {
+      ".read": true,
+      "$id": {
+        ".write": "auth != null && !data.exists() && newData.child('userId').val() == auth.uid",
+        ".validate": "newData.hasChildren(['productName', 'price', 'sellerName', 'phone', 'userId'])"
+      }
+    },
+    "reviews": {
+      ".read": true,
+      "$provider_id": {
+        "$review_id": {
+          ".write": "auth != null && !data.exists() && newData.child('userId').val() == auth.uid",
+          ".validate": "newData.hasChildren(['userId', 'text', 'stars']) && newData.child('stars').isNumber() && newData.child('stars').val() >= 1 && newData.child('stars').val() <= 5"
+        }
+      }
+    },
+    "wheel_spins": {
+      ".read": true,
+      "$id": {
+        ".write": "!data.exists()"
+      }
+    },
+    "deaths": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "heroes": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "pendingHeroes": {
+      ".read": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'",
+      "$id": {
+        ".write": "auth != null && !data.exists() && newData.child('userId').val() == auth.uid"
+      }
+    },
+    "ticker": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "globalNotification": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "settings": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1'"
+    },
+    "userRequests": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid == $uid || auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1')",
+        ".write": "auth != null && (auth.uid == $uid || auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1')"
+      }
+    },
+    "notifications": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid == $uid || auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1')",
+        ".write": "auth != null && (auth.uid == $uid || auth.uid == '8v8PK3iJQdd8ukLWfmsV92jDjbz1')"
+      }
+    },
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}

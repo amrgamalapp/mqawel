@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '2.3.20'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.11.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.20"
+        classpath 'com.google.gms:google-services:4.5.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core:1.13.1'
+            force 'androidx.core:core-ktx:1.13.1'
+            force 'androidx.annotation:annotation:1.8.2'
+            force 'androidx.lifecycle:lifecycle-common:2.7.0'
+            force 'androidx.lifecycle:lifecycle-runtime:2.7.0'
+            force 'androidx.lifecycle:lifecycle-livedata:2.7.0'
+            force 'androidx.fragment:fragment:1.7.1'
+            force 'androidx.activity:activity:1.9.1'
+        }
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

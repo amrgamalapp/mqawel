@@ -1,0 +1,75 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+// Load the release signing configuration from android/key.properties.
+// The actual keystore file (new_upload_key.jks) should be placed in android/.
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new java.util.Properties()
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+
+android {
+    namespace = "com.iraqia.amr"
+    compileSdk = 36
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        // Enable core library desugaring for libraries that require newer Java APIs
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    defaultConfig {
+        applicationId = "com.iraqia.amr"
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            if (!keystorePropertiesFile.exists()) {
+                throw new GradleException("Missing android/key.properties. Create it from key.properties.example before building a release.")
+            }
+
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storePassword keystoreProperties['storePassword']
+            def keystoreFile = rootProject.file(keystoreProperties['storeFile'])
+            storeFile keystoreFile
+
+            if (!keystoreFile.exists()) {
+                throw new GradleException("Keystore not found: ${keystoreFile.absolutePath}")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Add core library desugaring dependency to support newer Java APIs used by some plugins (e.g. flutter_local_notifications)
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+}
+
+flutter {
+    source = "../.."
+}
