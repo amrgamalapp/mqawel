@@ -1,29 +1,16 @@
-# مساح برو (Masa7 Pro)
+# amrtools_app_v2
 
-تطبيق Android متكامل للحصر الهندسي وحساب كميات مواد البناء.
+A new Flutter project.
 
-## المميزات
+## Getting Started
 
-- حاسبة الخرسانة (حجم + خصم التقاطعات)
-- حاسبة الحديد (تسليح متعدد الأقطار)
-- حاسبة الطوب (12سم / 25سم مع خصم الفتحات)
-- حاسبة الحفر والردم
-- حاسبة المحارة
-- حاسبة السيراميك (مع عدد العلب)
-- محول الوحدات (طول / مساحة / حجم)
-- حاسبة المباني الريفية (حصر كامل)
-- حفظ الحسابات
+This project is a starting point for a Flutter application.
 
-## التقنيات
+A few resources to get you started if this is your first Flutter project:
 
-- Kotlin
-- Jetpack Compose
-- Material Design 3
-- Navigation Compose
-- ViewModel
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-## التطوير
-
-م. عمرو جمال عوض
-
-© 2026 مساح برو
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
