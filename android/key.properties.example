@@ -1,5 +1,0 @@
-# Copy this file to key.properties and fill in your real values.
-storePassword=YOUR_KEYSTORE_PASSWORD
-keyPassword=YOUR_KEY_PASSWORD
-keyAlias=upload
-storeFile=new_upload_key.jks
